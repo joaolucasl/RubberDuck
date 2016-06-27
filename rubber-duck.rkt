@@ -39,4 +39,9 @@
           )
        )
        (file->lines targetFile)) ;; Working upon a target file, split by its lines into a list
-  (display source)) 
+  ;; Function to rebuild the lists into formatted strings
+  (define (joiner lst) (string-join (map (~a lst) "\n")))
+    ;; And build the dictionary to be returned
+    (hash "describe" (joiner describe)
+        "source" (joiner source)
+        "expect" (joiner expect))) 
